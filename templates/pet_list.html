@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Pets</title>
+</head>
+<body>
+    <div id="all-pets">
+        {% for pet in all_pets %}
+        <div class="cage">
+            <a href="/{{pet.id}}">{{pet.name}}</a>
+            {% if pet.photo_url %}
+            <div>
+                <img src="{{pet.photo_url}}" alt="">
+            </div>
+           
+            {% else %}
+            <div>
+                <div>__________</div>
+                NO IMAGE PROVIDED
+                <div>__________</div>
+            </div>
+            
+            {%  endif %}
+            <div>
+                {% if pet.available %}
+                <div>
+                    {{pet.name}} is available!
+                </div>
+                {% else %}
+                <div>
+                  {{pet.name}} is <strong>not</strong> available!
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  <div>
+    <a href="/add">Add a New pet</a>
+  </div>
+</body>
+</html>
